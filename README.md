@@ -1,4 +1,10 @@
 
+<big><big><b>PyCity Schools Analysis</b></big></big>  <br>
+
+OBSERVED TREND 1:  Charter schools perform better than district shcools  <br>
+OBSERVED TREND 2:  The performance of a school's students is inversely related to the size of the school.  <br>
+OBSERVED TREND 3:  The data suggests that the performance of a school's students is inversley related to the school's spending per student.  However, it's possible that this is simply because larger shcools are more expensive, and larger schools perform worse.  <br>
+
 
 ```python
 import pandas as pd
@@ -7,19 +13,22 @@ schools_inpath = 'raw_data/schools_complete.csv'
 students_inpath = 'raw_data/students_complete.csv'
 
 schools_df = pd.read_csv(schools_inpath, dtype={'School ID' : int, 
-                                                                  'name' : object, 
-                                                                  'type' : object, 
-                                                                  "size": int, 
-                                                                  'budget' : int})
+                                                'name' : object, 
+                                                'type' : object, 
+                                                'size' : int, 
+                                                'budget' : int})
+
 students_df = pd.read_csv(students_inpath, dtype = {'Student ID' : int,
-                                                                     'name' : object,
-                                                                     'gender' : object,
-                                                                     'grade' : object,
-                                                                     'school' : object,
-                                                                     'reading_score' : int,
-                                                                     'math_score' : int})
+                                                    'name' : object,
+                                                    'gender' : object,
+                                                    'grade' : object,
+                                                    'school' : object,
+                                                    'reading_score' : int,
+                                                    'math_score' : int})
 
 ```
+
+<big><b>District Summary</b></big>
 
 
 ```python
@@ -108,6 +117,8 @@ district_summary_df
 </div>
 
 
+
+<big><b>School Summary</b></big>
 
 
 ```python
@@ -388,6 +399,8 @@ schools_summary
 
 
 
+<big><b>Top Performing Schools (By Passing Rate)</b></big>
+
 
 ```python
 #top_performing_schools = schools_summary.sort_values(['% Overall Passing Rate', 'Per Student Budget'], ascending=[False, True]).iloc[0:5,]
@@ -494,6 +507,8 @@ top_performing_schools
 
 
 
+<big><b>Bottom Performing Schools (By Passing Rate)</b></big>
+
 
 ```python
 #bottom_performing_schools = schools_summary.sort_values(['% Overall Passing Rate', 'Per Student Budget'], ascending=[True, False]).iloc[0:5,]
@@ -599,6 +614,8 @@ bottom_performing_schools
 </div>
 
 
+
+<big><b>Math Scores by Grade</b></big>
 
 
 ```python
@@ -769,6 +786,10 @@ math_scores_grade_school
 
 
 
+<big><b></b></big>
+
+<big><b>Reading Score by Grade</b></big>
+
 
 ```python
 reading_9_school = students_9.groupby('school')['reading_score'].sum() / students_9_school_count
@@ -928,6 +949,8 @@ reading_scores_grade_school
 
 
 
+<big><b>Scores by School Spending</b></big>
+
 
 ```python
 spending_df = schools_df
@@ -1042,6 +1065,8 @@ scores_by_spending
 
 
 
+<big><b>Scores by School Size</b></big>
+
 
 ```python
 size_df = schools_df
@@ -1151,6 +1176,8 @@ scores_by_size
 </div>
 
 
+
+<big><b>Scores by School Type</b></big>
 
 
 ```python
